@@ -1,9 +1,12 @@
 import MainContainer from "./components/MainContainer";
+import ValueProvider from "./contexts/ValueContext";
 
 function App() {
   return (
     <div className="App">
-      <MainContainer />
+      <ValueProvider>
+        <MainContainer />
+      </ValueProvider>
     </div>
   );
 }
