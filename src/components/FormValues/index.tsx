@@ -1,13 +1,12 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { KeyboardEvent, useContext } from "react";
-import { api } from "../../services";
 import { ValueContext } from "../../contexts/ValueContext";
 
 interface IFormInput {
   amount: string;
   installments: string;
   mdr: string;
-  days: number[];
+  days?: number[];
 }
 
 const FormValues = () => {

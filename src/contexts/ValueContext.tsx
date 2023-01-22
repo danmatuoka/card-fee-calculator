@@ -18,6 +18,7 @@ interface IFormInput {
   amount: string;
   installments: string;
   mdr: string;
+  days?: number[] | boolean;
 }
 
 interface IValueContext {
@@ -33,6 +34,14 @@ const ValueProvider = ({ children }: IValueProviderProps) => {
   const [keys, setKeys] = useState<string[]>(["1", "15", "30", "90"]);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    data.days == false
+      ? (data = {
+          amount: data.amount,
+          installments: data.installments,
+          mdr: data.mdr,
+        })
+      : data;
+
     try {
       const response = await api.post("/", data);
       setValues(Object.values(response.data));
