@@ -21,42 +21,64 @@ const FormValues = () => {
   };
 
   return (
-    <div>
-      <h2>Simule sua Antecipação</h2>
-      <form onKeyDown={onKeyDownEnter}>
-        <label>
+    <div className="flex flex-col bg-white w-3/5 p-8">
+      <h2 className="text-2xl font-source font-bold text-[#656565]">
+        Simule sua Antecipação
+      </h2>
+      <form className="flex flex-col" onKeyDown={onKeyDownEnter}>
+        <label className="label-input">
           Informe o valor da venda *
-          <input {...register("amount")} />
+          <input
+            className="input-field"
+            {...register("amount", { required: true })}
+          />
         </label>
-        <label>
+        <label className="label-input">
           Em quantas parcelas *
-          <input {...register("installments")} />
+          <input
+            className="input-field"
+            {...register("installments", { required: true, min: 1, max: 12 })}
+          />
         </label>
-        <span>Máximo de 12 parcelas</span>
-        <label>
+        <span className="text-[10px] text-[#CECECE] font-semibold">
+          Máximo de 12 parcelas
+        </span>
+        <label className="label-input">
           Informe o percentual de MDR *
-          <input {...register("mdr")} />
+          <input
+            className="input-field"
+            {...register("mdr", { required: true })}
+          />
         </label>
-        <label>
-          Amanhã
-          <input type="checkbox" {...register("days")} value="1" />
-        </label>
-        <label>
-          15 dias
-          <input type="checkbox" {...register("days")} value="15" />
-        </label>
-        <label>
-          30 dias
-          <input type="checkbox" {...register("days")} value="30" />
-        </label>
-        <label>
-          60 dias
-          <input type="checkbox" {...register("days")} value="60" />
-        </label>
-        <label>
-          90 dias
-          <input type="checkbox" {...register("days")} value="90" />
-        </label>
+        <p className="label-input">Periodo:</p>
+        <div className="flex">
+          <label className="label-checkbox">
+            Amanhã
+            <input type="checkbox" {...register("days")} value="1" />
+          </label>
+          <label className="label-checkbox">
+            15 dias
+            <input type="checkbox" {...register("days")} value="15" />
+          </label>
+          <label className="label-checkbox">
+            30 dias
+            <input type="checkbox" {...register("days")} value="30" />
+          </label>
+        </div>
+        <div className="flex">
+          <label className="label-checkbox">
+            60 dias
+            <input type="checkbox" {...register("days")} value="60" />
+          </label>
+          <label className="label-checkbox">
+            90 dias
+            <input type="checkbox" {...register("days")} value="90" />
+          </label>
+          <label className="label-checkbox">
+            120 dias
+            <input type="checkbox" {...register("days")} value="120" />
+          </label>
+        </div>
       </form>
     </div>
   );

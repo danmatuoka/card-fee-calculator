@@ -4,22 +4,34 @@ const ValuesList = () => {
   const { values, keys } = useValueContext();
 
   return (
-    <div>
-      {keys!.map((elem) => (
-        <div key={elem}>
-          <p>{elem == "1" ? "Amanhã:" : `Em ${elem} dias:`}</p>
+    <div className="flex flex-col bg-[#D1DCE32E] w-2/5 p-8">
+      <p className="font-source font-bold italic text-base text-[#3D75BB] ">
+        VOCÊ RECEBERÁ:
+      </p>
+      <hr className="border-t-2 border-[#5D9CEC] opacity-30"></hr>
+      <div className="flex">
+        <div className="pt-3 pr-1">
+          {keys!.map((elem) => (
+            <div className="pt-5" key={elem}>
+              <p className="value-preview">
+                {elem == "1" ? "Amanhã:" : `Em ${elem} dias:`}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
-      {values!.map((value, index) => (
-        <div key={index}>
-          <p>
-            {value.toLocaleString("pt-br", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </p>
+        <div className="pt-3">
+          {values!.map((value, index) => (
+            <div className="pt-5" key={index}>
+              <p className="value-preview font-bold">
+                {value.toLocaleString("pt-br", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };

@@ -35,11 +35,7 @@ const ValueProvider = ({ children }: IValueProviderProps) => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
       const response = await api.post("/", data);
-
-      console.log(data);
-
       setValues(Object.values(response.data));
-      console.log(response);
       setKeys(Object.keys(response.data));
     } catch (error) {
       console.log(error);

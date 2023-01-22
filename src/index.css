@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .label-input {
+    @apply text-xs flex flex-col font-source text-[#656565] pt-3;
+  }
+  .label-checkbox {
+    @apply text-xs font-source text-[#656565] flex gap-1.5 p-2 pl-0;
+  }
+  .input-field {
+    @apply p-2 rounded focus:outline outline-[#66AFE9] font-source border border-[#DDE6E9];
+  }
+  .value-preview {
+    @apply font-source italic text-base text-[#5D9CEC];
+  }
+}
